@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ConsensusAlgorithm {
+    private List<Integer> values;
+    private int majority;
+
+    public ConsensusAlgorithm(List<Integer> values) {
+        this.values = values;
+        this.majority = values.size() / 2 + 1;
+    }
+
+    public int getConsensus() {
+        // map values to their frequency
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        for (int value : values) {
+            frequencyMap.put(value, frequencyMap.getOrDefault(value, 0) + 1);
+        }
+
+        // find the value(s) that occur the most
+        int maxFrequency = 0;
+        List<Integer> maxValues = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            if (entry.getValue() > maxFrequency) {
+                maxValues.clear();
+                maxValues.add(entry.getKey());
+                maxFrequency = entry.getValue();
+            } else if (entry.getValue() == maxFrequency) {
+                maxValues.add(entry.getKey());
+            }
+        }
+
+        // if the maximum frequency is greater than or equal to the majority, return the value(s)
+        if (maxFrequency >= majority) {
+            return maxValues;
+        } else {
+            return null;
+        }
+    }
+}

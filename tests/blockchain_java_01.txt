@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Blockchain {
+    private List<Block> blocks;
+
+    public Blockchain() {
+        blocks = new ArrayList<>();
+    }
+
+    public void addBlock(Block block) {
+        blocks.add(block);
+    }
+
+    public Block getBlock(int index) {
+        return blocks.get(index);
+    }
+
+    public int size() {
+        return blocks.size();
+    }
+
+    public static class Block {
+        private String data;
+        private String previousHash;
+        private String hash;
+
+        public Block(String data, String previousHash) {
+            this.data = data;
+            this.previousHash = previousHash;
+            this.hash = calculateHash();
+        }
+
+        public String calculateHash() {
+            // Implement a simple hashing function that takes in the data and previous hash, and returns a hash
+            // You can use the hash function from java.security.MessageDigest
+            // For example:
+            // MessageDigest md = MessageDigest.getInstance("SHA-256");
+            // md.update((data + previousHash).getBytes());
+            // byte[] hash = md.digest();
+            // return new String(hash);
+            //
+            // You will need to import java.security.MessageDigest
+        }
+
+        public String getHash() {
+            return hash;
+        }
+    }
+}

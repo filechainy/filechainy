@@ -1,0 +1,14 @@
+As redes descentralizadas são projetadas para permitir que os usuários realizem transações, acessem aplicativos ou armazenem dados sem a necessidade de um intermediário centralizado. Isso pode trazer algumas vantagens em comparação com sistemas centralizados:
+
+Maior resistência a falhas: Como uma rede descentralizada não depende de um único ponto de falha, ela é menos propensa a falhas gerais.
+
+Maior segurança: Uma rede descentralizada é mais difícil de ser invadida ou corrompida, pois não há um único ponto de acesso a ser atacado.
+
+Maior privacidade: As redes descentralizadas permitem que os usuários mantenham suas informações privadas, pois elas não são armazenadas em um único local.
+
+Maior descentralização: As redes descentralizadas são mais descentralizadas, o que significa que elas não estão sob o controle de uma única autoridade. Isso pode levar a um equilíbrio mais justo de poder entre os usuários.
+
+Maior flexibilidade: As redes descentralizadas são mais flexíveis e podem ser adaptadas para atender às necessidades de uma ampla variedade de aplicativos e usuários.
+
+
+

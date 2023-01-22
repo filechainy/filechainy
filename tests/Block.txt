@@ -1,0 +1,99 @@
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+public class Block {
+    // data stored in the block
+    private String data;
+    // reference to the previous block
+    private Block previousBlock;
+    // hash of the block
+    private String hash;
+    // nonce value for proof-of-work
+    private long nonce;
+
+    public Block(String data, Block previousBlock) {
+        this.data = data;
+        this.previousBlock = previousBlock;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public Block getPreviousBlock() {
+        return previousBlock;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public long getNonce() {
+        return nonce;
+    }
+
+    // compute the hash of the block
+    public void computeHash() {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            String dataToHash = data + previousBlock.getHash() + nonce;
+            byte[] hashBytes = messageDigest.digest(dataToHash.getBytes("UTF-8"));
+            StringBuilder hashBuilder = new StringBuilder();
+            for (byte b : hashBytes) {
+                hashBuilder.append(String.format("%02x", b));
+            }
+            hash = hashBuilder.toString();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // increment the nonce value until the hash starts with a certain number of leading zeros
+    public void mineBlock(int leadingZeros) {
+        nonce = 0;
+        while (true) {
+            computeHash();
+            if (hash.startsWith(String.format("%0" + leadingZeros + "d", 0))) {
+                break;
+            }
+            nonce++;
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Block block = (Block) o;
+        return Objects.equals(data, block.data) &&
+                Objects.equals(previousBlock, block.previousBlock) &&
+                Objects.equals(hash, block.hash);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(data, previousBlock, hash);
+    }
+}
+
+public class Blockchain {
+    private List<Block> blocks;
+    private int leadingZeros;
+
+    public Blockchain(int leadingZeros) {
+        blocks = new ArrayList<>();
+        this.leadingZeros = leadingZeros;
+        blocks.add(createGenesisBlock());
+    }
+
+    // create the first block in the blockchain (called the "genesis block")
+    private Block createGenesisBlock() {
+        Block block = new Block("Genesis Block", null);
+        block.mineBlock(leadingZeros);
+        return block;
+    }
+
+    public Block getLatestBlock() {
+        return blocks.get(blocks.

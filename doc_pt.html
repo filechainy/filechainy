@@ -1,0 +1,209 @@
+﻿<html>
+  <head>
+    <title>
+      Filechainy
+    </title>
+    <link rel="icon" href="img/logo_1.png">
+  </head>
+
+  <style type="text/css"> 
+
+  /* Add some styling to the messages */
+  .message {
+    margin: 10px 0;
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+  .message b {
+    font-weight: bold;
+  }
+
+  /* Add some styling to the form */
+  form {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+  }
+  input[type="text"], textarea {
+    font-family: sans-serif;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  input[type="submit"] {
+    font-family: sans-serif;
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+    .top{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: #444;
+    }
+
+    h1{
+      color: #00FF55;
+    }
+  
+    body{
+      font-family: Arial;
+      letter-spacing: 2px;
+      color: #666666;
+    }
+
+    .present{
+      letter-spacing: 4px;
+      font-size: 54px;
+      font-family: Verdana;
+    }
+
+    .present2{
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-family: Verdana;
+    }
+
+    .button{
+      padding: 20px;
+      background-color: #AAA;
+      border: 2px solid #000:
+      border-radius: 15px 15px 15px 15px;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-family: Verdana;
+      color: #FFFFFF;
+      text-decoration: none;      
+    }
+
+    .button:hover{
+      background-color: #666;
+    }
+   
+    input{
+    padding: 10px;
+    }
+
+  </style>
+
+  <body>
+    <table width='100%' class='top'>
+      <tr>
+        <td>
+          <br>
+        </td>
+      </tr>
+    </table>
+
+    <br><br><br><br>
+
+    <div align='center'>
+    
+      <span class='present'>
+        Documentação
+      </span>
+
+      <table width='80%' style='text-justify: justify;' class='present2'>
+        <tr>
+          <td>
+            <div style='text-align: justify;'>                         
+
+            <br>
+ 
+            <h1>Index.php</h1><br>
+
+            No <b>index.php</b> você pode inserir novos arquivos através da variável GET <b>hash</b> e <b>contents</b> <br><br>
+
+	    Ou seja, se você acessar 'index.php?hash=test.txt&contents=123' você irá escrever um arquivo chamado 'test.txt' que terá como conteúdo o texto '123' sendo guardado dentro da pasta 'hash'<br><br>
+
+            Você também pode usar a variável <b>user</b> para inserir o seu endereço de pagamento. Ou seja, o endereço de pagamento associado a cada pedaço do arquivo <br><br>
+
+            Lembre-se o sistema trabalha apenas com arquivos de texto e codificados em base64<br><br>
+
+            Você obtém o caminho de um arquivo da pasta 'hash' iniciando a variável <b>id</b> (e.x: index.php?id=1). 
+            Você também pode usar <b>userid</b>, <b>fileid</b> ou <b>urlid</b> para obter o caminho de um arquivo de outro diretório
+      
+            <hr>                   
+
+            <br>
+            <h1>Receive.php</h1><br>
+            Recebe e escreve as variáveis GET <i>hash, contents and user</i>. Mostra uma página em branco se não for inicializada            
+            <hr>
+ 
+            <br>
+            <h1>Send.php, multiple_send.php and multiple_send_list.php</h1><br>
+            Esses scripts servem para enviar os arquivos dentro da pasta 'hash' para alguma URL (servidor) ou lista de URLs 
+            <hr>
+
+            <br>
+            <h1>Convert.php</h1><br>
+            Divide os arquivos da pasta 'file' em pedaços de 8 Kb com um nome SHA1 e os salva na pasta 'hash' codificados em base64. Uma chave será criada no diretório 'key' com a ordem correta cujo qual os arquivos devem ser reorganizados
+            <hr>
+
+            <br>
+            <h1>View.php</h1><br>
+            Junta os pedaços de arquivos presentes em uma chave (restabelece o arquivo)
+            <hr>
+
+            <br>
+            <h1>Outros scripts</h1>
+            
+            <a href='upload.php' target='_blabk'>upload.php</a> : Envie arquivos para o diretório 'files' <br><br>
+
+            <a href='filelist.php' target='_blabk'>filelist.php</a> : Mostra os arquivos enviados (modo texto)<br><br>
+ 
+            <a href='gallery.php' target='_blabk'>gallery.php</a> : Mostra os arquivos enviados (como imagens)<br><br>
+
+            <a href='urls.php' target='_blabk'>urls.php</a> : Adicione uma URL manualmente<br><br>
+
+            <a href='paste.php' target='_blabk'>paste.php</a> : Ferramente simples para colagem <br><br>
+
+            <a href='groups.php' target='_blabk'>groups.php</a> : Envie uma mensagem para um grupo <br><br>
+
+            <a href='zip_hash.php' target='_blabk'>zip_hash.php</a> : Compacta o conteúdo do diretório 'hash' <br><br>
+
+            <a href='files.php' target='_blabk'>files.php</a> : Obtém o caminho dos arquivos em um diretório através da variável GET <b>id</b> <br><br>
+
+            <hr>
+            
+            <br>
+            <h1>Diretórios padrão</h1>
+
+            <i>files</i> : Arquivos comuns <br><br>
+            <i>hash</i> : Pedaços de arquivos com um nome SHA1 e codificados em base64<br><br>
+            <i>user</i> : Armazena o usuário que enviou o pedaço de um arquivo<br><br>
+            <i>url</i> : URLs e servidores disponíveis<br><br>
+            <i>log</i> : Diretório reservado para guardar validações realizadas pelo próprio servidor e por outros<br><br>
+
+            <hr>
+            <br>
+            <h1>Java</h1>
+
+            Dentro da pasta 'Java' você encontrará ferramentas básicas para construir o seu próprio validador. Mas, a aplicação central é a 'CheckUrls'
+
+            <br><br>
+            <h1>CheckUrls.java</h1>
+
+            Esse programa lê um arquivo de texto chamado 'urls.txt' e checa cada URL com as demais para verificar se elas hospedam os mesmos arquivos.
+            Em caso positivo, uma requisição será realizada em um servidor de log.
+            Os arquivos que serão comparados devem estar dentro do diretório 'hash' no computador ou servidor do próprio usuário
+
+           </div>
+          </td>
+        </tr>
+      </table>
+
+      <br><br><br><br>
+ 
+      <a href='index_pt.php' class='button'>&nbsp; Voltar &nbsp;</a>
+
+      <br><br><br><br>
+      <i>2022 - filechainy</i>
+    </div>
+  </body>
+</htlml>

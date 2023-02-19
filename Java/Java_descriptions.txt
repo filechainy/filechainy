@@ -1,0 +1,10 @@
+FileCheckerV2 - Check if the files in 'hash' directory are the same of urls in 'urls.txt'
+FileCheckerV3 - Check if the files in 'hash' directory are the same of urls in 'urls.txt' with latency
+SendTest - Convert the file 'test.txt' to base64 and send the converted file via http GET request
+SendTestV2 - Convert the files 'of 'files' diretory to base64 and send the converted files via http GET request
+FileConverter - Convert the files of 'files' directory to base64 and split in chunks of 8kb
+DownloadUrlsNew - Downloads all the urls of the text file 'urls.txt' in the 'files' directory
+RemoveDuplicateUrls - Remove duplicate values of 'urls.txt'
+URLGetter = Reads "files.txt" and sends each URL contained in the file to the URLs contained in "urls.txt" using the GET variable "file":
+PictureViewerFull - A window that displays the images present in a text file (like a simple browser)
+ImageMerge - Create a picture with nine random crops of the pictures in 'pics' folder

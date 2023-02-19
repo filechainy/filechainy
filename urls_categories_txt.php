@@ -57,6 +57,13 @@
       color: #666666;
     }
 
+   a{
+      text-decoration: none;
+      font-family: Arial;
+      letter-spacing: 2px;
+      color: #666666;
+    }
+
     .present{
       letter-spacing: 4px;
       font-size: 54px;
@@ -105,44 +112,26 @@
     <div align='center'>
     
       <span class='present'>
-        URLs
+        URLS List
       </span>
 
       <table width='80%' style='text-justify: justify;' class='present2'>
         <tr>
           <td>
-            <div style='text-align: justify;'>                         
+            <div style='text-align: justify;'>  
 <?php
+                   
+$folder = "categories/default";
+$c = 0;
 
-// Display the message form
-echo "<form method='post' action=''>";
-echo "<input type='text' name='name' placeholder='URL'>";
-echo "<input type='submit' name='submit' value='Submit'>";
-echo "</form>";
+foreach (glob("$folder/*") as $file){
 
-// Check if the form has been submitted
-if (isset($_POST['submit'])) {
-  // Get the form data
-  $name = $_POST['name'];
 
-  // Format the message as a string
-  $messageString = "$name\n";
+    $file_name = explode('/', $file);
 
-  // Append the message to the messages file
-  file_put_contents('urls.txt', $messageString, FILE_APPEND);
+    echo "<li><a href='$file' target='_blank'>$file_name[2]</a></li>";
+
 }
-
-// Read the messages file
-$messages = file_get_contents('urls.txt');
-
-// Split the messages into an array
-$messages = explode("\n", $messages);
-
-// Display the messages
-foreach ($messages as $message) {
-  echo "$message<br>";
-}
-
 ?>
            </div>
           </td>

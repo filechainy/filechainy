@@ -123,9 +123,11 @@
     $file_ext = substr($_GET['comment_file'], -3);
     $file_ext = strtolower($file_ext);
 
+    $comment_file = $_GET['comment_file'];
+
     if($file_ext == 'jpg' or $file_ext == 'png' or $file_ext == 'gif' or $file_ext == 'peg'){
 
-        $thumb_dir = $_GET['comment_file'];
+        $thumb_dir = "<img src='" . $_GET['comment_file'] . "' width='25%'>";
 
     } else {   
  
@@ -133,7 +135,7 @@
 
     }
 
-    echo "<div align='center'><a href='$thumb_dir' target='_blank'><img src='$thumb_dir' width='25%'></a></div>";
+    echo "<div align='center'><a href='$comment_file' target='_blank'>$thumb_dir</a></div>";
 
     if(!file_exists("comments")){
 

@@ -3,13 +3,42 @@
 $hash = $_GET['hash'];
 $contents = $_GET['contents'];
 $user = $_GET['user'];
+$file = $_GET['file'];
+$url = $_GET['url'];
+$data = $_GET['data'];
 
-$contents = str_replace(' ', "+", $contents);
-$hash = str_replace('.', "", $hash);
+$folder = 'hash';
 
-if(!file_exists("hash/$hash")){
+if ($file){
+    $contents = $file;
+    $folder = 'files_urls';
+}
 
-    $file = fopen("hash/$hash", "w");
+if ($url){
+    $contents = $url;
+    $folder = 'urls';
+}
+
+if ($data){
+    $contents = $data;
+    $folder = 'urls';
+}
+
+// Without a 'hash' the file is not processed as base64
+if(!$hash && $contents){
+
+    $hash = sha1($contents);
+
+} else {
+
+    $contents = str_replace(' ', "+", $contents);
+    $hash = str_replace('.', "", $hash);
+
+}
+
+if(!file_exists("$folder/$hash")){
+
+    $file = fopen("$folder/$hash", "w");
     fwrite($file, $contents);
     fclose($file); 
 }

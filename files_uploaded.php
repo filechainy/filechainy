@@ -114,10 +114,9 @@ $entry = 0;
 $collum = 0;
 $search_break = 0;
 
-foreach (glob("categories/*") as $sub){
- 
-    foreach (glob("$sub/*") as $picture){
-  
+foreach (glob("categories/uploaded/*") as $picture){
+    
+
         if ($c >= $ini and $c < $end){
 
             $thumb_dir = '';
@@ -151,10 +150,10 @@ foreach (glob("categories/*") as $sub){
 
     $c++;
 
-    //if($search_break == $limit){break;}
+    if($search_break == $limit){break;}
 
-    }
 }
+
 
 ?>
            </div>

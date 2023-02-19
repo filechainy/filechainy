@@ -1,0 +1,19 @@
+<script>
+
+const links = ["apple", "banana", "cherry", "orange", "grape"];
+
+const urls = [
+  "http://localhost/filechainy/receive.php?contents=",
+  "http://localhost/filechainy/receive_test.php?contents=",
+];
+
+links.forEach(link => {
+  urls.forEach(url => {
+    fetch(url + link)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+  });
+});
+
+</script>

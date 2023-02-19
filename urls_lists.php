@@ -105,42 +105,76 @@
     <div align='center'>
     
       <span class='present'>
-        URLs
+        Paste
       </span>
 
       <table width='80%' style='text-justify: justify;' class='present2'>
         <tr>
           <td>
-            <div style='text-align: justify;'>                         
+            <div style='text-align: justify;'>   
+
+            <h1>URLs</h1>                      
 <?php
+
+if(!file_exists("paste")){
+
+    mkdir("paste");
+
+}
 
 // Display the message form
 echo "<form method='post' action=''>";
-echo "<input type='text' name='name' placeholder='URL'>";
+echo "<input type='text' name='name' placeholder='Name'>";
+echo "<input type='text' name='category' placeholder='Category'>";
+echo "<textarea name='message' placeholder='List of URLs'></textarea>";
 echo "<input type='submit' name='submit' value='Submit'>";
 echo "</form>";
+
+$filename_hash = "";
 
 // Check if the form has been submitted
 if (isset($_POST['submit'])) {
   // Get the form data
+
+  $message = $_POST['message'];
+  
+  $category = $_POST['category'];
+  
   $name = $_POST['name'];
 
-  // Format the message as a string
-  $messageString = "$name\n";
+  if(!$category){$category = "default";}
 
-  // Append the message to the messages file
-  file_put_contents('urls.txt', $messageString, FILE_APPEND);
-}
+  if(!file_exists("categories/$category")){
 
-// Read the messages file
-$messages = file_get_contents('urls.txt');
+    mkdir("categories/$category");
 
-// Split the messages into an array
-$messages = explode("\n", $messages);
+  }
 
-// Display the messages
-foreach ($messages as $message) {
-  echo "$message<br>";
+  if (!$name){
+
+    $filename_hash = sha1($message);
+
+  } else {
+
+    $filename_hash = $name;
+  }
+
+  if(!file_exists("categories/$category/$name")){
+
+    // Format the message as a string
+    $messageString = "$message";
+
+    // Append the message to the messages file
+    file_put_contents("categories/$category/$filename_hash", $messageString, FILE_APPEND);
+
+    echo "<a href='categories/$category/$filename_hash'>View paste</a>";
+
+  } else {
+
+    echo "File alredy exists!";
+
+  }
+
 }
 
 ?>
@@ -149,7 +183,7 @@ foreach ($messages as $message) {
         </tr>
       </table>
 
-      <br><br><br><br><br><br>
+      <br><br><br><br>
  
       <a href='index.php' class='button'>&nbsp; Back &nbsp;</a>
 

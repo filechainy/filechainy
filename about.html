@@ -1,0 +1,147 @@
+﻿<html>
+  <head>
+    <title>
+      Filechainy
+    </title>
+    <link rel="icon" href="img/logo_1.png">
+  </head>
+
+  <style type="text/css"> 
+
+    .top{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: #444;
+    }
+
+    h1{
+      color: #00FF55;
+    }
+  
+    body{
+      font-family: Arial;
+      letter-spacing: 2px;
+      color: #666666;
+    }
+
+    .present{
+      letter-spacing: 4px;
+      font-size: 54px;
+      font-family: Verdana;
+    }
+
+    .present2{
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-family: Verdana;
+    }
+
+    .buttonBuy{
+      padding: 20px;
+      background-color: #AAA;
+      border: 2px solid #000:
+      border-radius: 15px 15px 15px 15px;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-family: Verdana;
+      color: #FFFFFF;
+      text-decoration: none;      
+    }
+
+    .buttonBuy:hover{
+      background-color: #666;
+    }
+    
+  </style>
+
+  <body>
+    <table width='100%' class='top'>
+      <tr>
+        <td>
+          <br>
+        </td>
+      </tr>
+    </table>
+
+    <br><br><br><br>
+
+    <div align='center'>
+      <span class='present'>
+        Introduction
+      </span>
+
+      <table width='80%' class='present2'>
+        <tr>
+          <td>
+            <div style='text-align: justify;'>
+                  <h1>Brief</h1><br>   
+
+            <b>Filechainy</b> is a open-source project for transfer data using the GET method
+            <br>
+            <br><br>
+            <hr>
+            <h1>How does the GET method work?</h1>
+
+            The method <b>GET</b> enables send contents to a site without fullfit a formulary or press a button. Just append to the site address the name (of the GET variable) and its contents.<br>
+            <br>
+ 
+            <h1>How to use it?</h1>
+
+            http://test.com/index.php<br><br>
+            Becomes<br><br>
+            http://test.com/index.php<b>?url=http://google.com</b><br><br>
+            Or with two parameters<br><br>
+            http://test.com/index.php<b>?url=http://google.com&name=google</b><br><br>  
+
+            The <b>?</b> is used once for separate the site address from the contents that can be sent or request.<br>
+            The <b>=</b> symbol is used to assign to each GET variable a content as in "url=http://google.com" (where "url" is the GET variable that will receive and "http://google.com" is the content sent).<br>
+            The <b>&</b> is utilised to separate each variable and its contents from the others<br>
+  
+            
+            <br>
+            <h1>Script usage</h1>
+            <hr>
+            <br>
+            In <a href='index.php' target='_blank'>index.php</a> You can use the GET parameters "hash" and "contents" or "url" for write a file (not show in search).<br>
+            E.g: index.php?url=http://test.com<br>
+            <hr>
+
+            <br>
+            <a href='receive.php' target='_blank'>receive.php</a> To send only a text or link using the GET parameter "contents" (not show in search).<br>
+            E.g: receive.php?contents=123test<br>
+            <hr>
+
+            <br>
+            <a href='url.php' target='_blank'>url.php</a>  To create a list of URLs inside a text file using the GET parameters "url" and "name" (searchable).<br>
+            E.g: url.php?url=http://test.com/cat.jpg&name=cats<br>
+            <hr>
+            <br>
+            <a href='url_unique.php' target='_blank'>url_unique.php</a> Insert a link via GET <i>url, name, category</i> and <i>description</i> to a file that will not be overwritten. (searchable).<br>
+            <hr>
+            <br><br>
+
+             <h1>Terms of use</h1><br>
+
+               1. We are not responsible for the files hosted or sent by third parties or users<br><br>
+
+               2. We are not responsible for any damage in usage and/or manipulation of the scripts, programs and applications offered<br><br>
+
+               3. Filechainy has no relationship with the companies owner of the logos used. Its use is for illustrative purposes only and fair use.
+
+           </div>
+          </td>
+        </tr>
+      </table>
+
+      <br> 
+
+      <br><br><br><br><br>         
+
+      <a href='index.php' class='buttonBuy'>&nbsp; Back &nbsp;</a>
+   
+      <br><br><br><br><br><br>
+      <i>2022 - filechainy</i>
+    </div>
+  </body>
+</htlml>

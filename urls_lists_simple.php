@@ -105,7 +105,7 @@
     <div align='center'>
     
       <span class='present'>
-        URLs
+        Paste
       </span>
 
       <table width='80%' style='text-justify: justify;' class='present2'>
@@ -114,33 +114,47 @@
             <div style='text-align: justify;'>                         
 <?php
 
+if(!file_exists("paste")){
+
+    mkdir("paste");
+
+}
+
 // Display the message form
 echo "<form method='post' action=''>";
-echo "<input type='text' name='name' placeholder='URL'>";
+echo "<textarea name='message' placeholder='List of image URLs'></textarea>";
 echo "<input type='submit' name='submit' value='Submit'>";
 echo "</form>";
+
+$filename_hash = "";
 
 // Check if the form has been submitted
 if (isset($_POST['submit'])) {
   // Get the form data
-  $name = $_POST['name'];
+  $message = $_POST['message'];
 
-  // Format the message as a string
-  $messageString = "$name\n";
 
-  // Append the message to the messages file
-  file_put_contents('urls.txt', $messageString, FILE_APPEND);
+$textarea_contents = $message;
+$urls = explode("\n", $textarea_contents);
+
+foreach ($urls as $url) {
+    $ext = strtolower(pathinfo($url, PATHINFO_EXTENSION));
+    if (!in_array($ext, array('jpg', 'jpeg', 'png', 'gif'))) {
+        echo "$url is not a valid image URL\n"; die;
+    } elseif (substr($url, 0, 4) !== 'http' && substr($url, 0, 5) !== 'https') {
+        echo "$url is not a valid URL\n"; die;
+    } 
 }
 
-// Read the messages file
-$messages = file_get_contents('urls.txt');
+  $filename_hash = sha1($message);
 
-// Split the messages into an array
-$messages = explode("\n", $messages);
+  // Format the message as a string
+  $messageString = "$message";
 
-// Display the messages
-foreach ($messages as $message) {
-  echo "$message<br>";
+  // Append the message to the messages file
+  file_put_contents("paste/$filename_hash", $messageString, FILE_APPEND);
+
+  echo "<a href='paste/$filename_hash'>View paste</a>";
 }
 
 ?>
@@ -149,7 +163,7 @@ foreach ($messages as $message) {
         </tr>
       </table>
 
-      <br><br><br><br><br><br>
+      <br><br><br><br>
  
       <a href='index.php' class='button'>&nbsp; Back &nbsp;</a>
 

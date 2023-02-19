@@ -1,5 +1,8 @@
 <?php
 
+// Split files and convert to base64
+include("convert.php");
+
 // Define the directory to be zipped
 $dir = 'hash/';
 

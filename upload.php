@@ -82,6 +82,12 @@
             <div style='text-align: justify;'>                         
 <?php
 
+if(!file_exists("categories/uploaded")){
+
+    mkdir("categories/uploaded");
+
+}
+
 // Check if the form was submitted
 if (isset($_POST['submit'])) {
   // Check if any files were uploaded
@@ -93,9 +99,9 @@ if (isset($_POST['submit'])) {
       $extension = strtolower($extension);
       // Check if the file extension is PHP
       if ($extension != 'php') {       
-        if(!file_exists('files/' . $_FILES['files']['name'][$i])){
+        if(!file_exists('categories/uploaded/' . $_FILES['files']['name'][$i])){
           // Move the uploaded file to the desired location
-          move_uploaded_file($_FILES['files']['tmp_name'][$i], 'files/' . $_FILES['files']['name'][$i]);
+          move_uploaded_file($_FILES['files']['tmp_name'][$i], 'categories/uploaded/' . $_FILES['files']['name'][$i]);
           echo "File sent with success! ";
         } else {        
           echo 'File already exists! '; 

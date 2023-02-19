@@ -1,0 +1,205 @@
+﻿<html>
+  <head>
+    <title>
+      Filechainy
+    </title>
+    <link rel="icon" href="img/logo_1.png">
+  </head>
+
+  <style type="text/css"> 
+
+  /* Add some styling to the messages */
+  .message {
+    margin: 10px 0;
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+  .message b {
+    font-weight: bold;
+  }
+
+  /* Add some styling to the form */
+  form {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+  }
+  input[type="text"], textarea {
+    font-family: sans-serif;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  input[type="submit"] {
+    font-family: sans-serif;
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+    .top{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: #444;
+    }
+
+    h1{
+      color: #00FF55;
+    }
+  
+    body{
+      font-family: Arial;
+      letter-spacing: 2px;
+      color: #666666;
+    }
+
+    .present{
+      letter-spacing: 4px;
+      font-size: 54px;
+      font-family: Verdana;
+    }
+
+    .present2{
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-family: Verdana;
+    }
+
+    .button{
+      padding: 20px;
+      background-color: #AAA;
+      border: 2px solid #000:
+      border-radius: 15px 15px 15px 15px;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-family: Verdana;
+      color: #FFFFFF;
+      text-decoration: none;      
+    }
+
+    .button:hover{
+      background-color: #666;
+    }
+   
+    input{
+    padding: 10px;
+    }
+
+  </style>
+
+  <body>
+    <table width='100%' class='top'>
+      <tr>
+        <td>
+          <br>
+        </td>
+      </tr>
+    </table>
+
+    <br><br><br><br>
+
+    <div align='center'>
+    
+      <span class='present'>
+        Documentation
+      </span>
+
+      <table width='80%' style='text-justify: justify;' class='present2'>
+        <tr>
+          <td>
+            <div style='text-align: justify;'>    
+
+            <br> 
+
+            <h1>Scripts</h1>
+            
+            <a href='upload.php' target='_blabk'>upload.php</a> : Upload files to the 'files' directory <br><br>
+
+            <a href='files.php' target='_blabk'>filelist.php</a> : Show the files uploaded or sent(as text)<br><br>
+
+            <a href='files_simple.php' target='_blabk'>filelist.php</a> : Show the files uploaded (as text)<br><br>
+ 
+            <a href='gallery.php' target='_blabk'>gallery.php</a> : Show the files uploaded (as image)<br><br>
+
+            <a href='urls.php' target='_blabk'>urls.php</a> : Enter manually a URL<br><br>
+
+            <a href='paste.php' target='_blabk'>paste.php</a> : Simple paste tool <br><br>
+
+            <a href='groups.php' target='_blabk'>groups.php</a> : Send a message to a group <br><br>
+
+            <a href='zip_hash.php' target='_blabk'>zip_hash.php</a> : Zip the contents of a folder (without the subdirectories)  <br><br>
+
+            <a href='zip_subdirectories.php' target='_blabk'>zip_subdirectories.php</a> : Zip the contents of a folder with the subdirectories <br><br>
+
+            <a href='files.php' target='_blabk'>files.php</a> : Get the path of the files in a directory by GET variable <b>id</b> <br><br>
+
+            <a href='url.php' target='_blabk'>url.php</a> : Send a URL using the GET variables <i>URL</i> and <i>category</i> inside a text file.<br><br>
+
+            <a href='url_unique.php' target='_blabk'>url_unique.php</a> : Send a URL using the GET variables <i>URL, category, name</i> and <i>description</i> as a file <br><br>
+
+            <a href='index.php' target='_blabk'>index.php</a> : You can insert new items using the GET variables <b>hash</b> and <b>contents</b>. 	    
+            You can get the path of a file using the GET variable <b>id</b> (e.g: index.php?id=1) or <b>userid</b>, <b>fileid</b> and <b>urlid</b> respectively<br><br>
+
+            <a href='convert.php' target='_blabk'>convert.php</a> : Split the files of 'file' folder in chunks of 8 Kb with a SHA1 name and save in 'hash' folder encoded in base64. A key will be created in 'key' folder with the order that the chunks of the file must be read   <br><br>
+
+            <a href='send.php' target='_blabk'>send.php</a>, <a href='multiple_send.php' target='_blabk'>multiple_send.php</a> and <a href='multiple_send_list.php' target='_blabk'>multiple_send_list.php</a>  : Send contents to URLs <br><br>
+
+            <a href='receive.php' target='_blabk'>receive.php</a> : Receive the GET variables <i>hash, contents and user</i>. But shows a blank page if if the variables are not assigned    <br><br>
+
+            <a href='view.php' target='_blabk'>view.php</a> : Paste the pieces of files present in a key (restore a file) <br><br>
+
+            <a href='request_send.php' target='_blabk'>request_send.php</a> : Send a list of links to a list of sites (URLs) <br><br>        
+         
+            <a href='down_test.php' target='_blabk'>down_test.php</a> : Download all the files presents in 'files/files.txt' using PHP <br><br>  
+
+            <a href='search.php' target='_blabk'>search.php</a> : Search per files without MySQL <br><br>  
+
+            <hr>
+            
+            <br>
+
+            <h1>Java</h1><br>
+<a href='Java/TextSenderGUI.java' target='_blank'>TextSenderGUI</a> - Send a text via GET to all urls in the 'urls.txt' file <br><br>
+<a href='Java/FileCheckerV2.java' target='_blank'>FileCheckerV2</a> - Check if the files in 'hash' directory are the same of urls in 'urls.txt' <br><br>
+<a href='Java/FileCheckerV3.java' target='_blank'>FileCheckerV3</a> - Check if the files in 'hash' directory are the same of urls in 'urls.txt' with latency <br><br>
+<a href='Java/SendTest.java' target='_blank'>SendTest</a> - Convert the file 'test.txt' to base64 and send the converted file via http GET request <br><br>
+<a href='Java/SendTestV2.java' target='_blank'>SendTestV2</a> - Convert the files of 'files' diretory to base64 and send the converted files via http GET request <br><br>
+<a href='Java/FileConverter.java' target='_blank'>FileConverter</a> - Convert the files of 'files' directory to base64 and split in chunks of 8kb <br><br>
+<a href='Java/DownloadUrlsNew.java' target='_blank'>DownloadUrlsNew</a> - Downloads all the urls of the text file 'urls.txt' in the 'files' directory <br><br>
+<a href='Java/RemoveDuplicateUrls.java' target='_blank'>RemoveDuplicateUrls</a> - Remove duplicate values of 'urls.txt' <br><br>
+<a href='Java/URLGetter.java' target='_blank'>URLGetter</a> = Reads "files.txt" and sends each URL contained in the file to the URLs contained in "urls.txt" using the GET variable "file": <br><br>
+<a href='Java/PictureViewerFull.java' target='_blank'>PictureViewerFull</a> - A window that displays the images present in a text file (like a simple browser) <br><br>
+<a href='Java/CheckUrls.java' target='_blank'>CheckUrls</a> - This program read the text file 'urls.txt'and check each URL against all others for verify if they host the same files. If so, a small GET request will be performed to a log server.
+            The files that will be checked must be in the 'hash' folder.<br><br>
+<a href='Java/Filechainy.java' target='_blank'>Filechainy.java</a> - Default application to send and download texts via GET request to multiple hosts<br><br>
+<a href='Java/UrlLatencyChecker.java' target='_blank'>UrlLatencyChecker.java</a> - Check the latency of a list of URLs using GUI<br><br>
+
+
+            <br>
+           
+            <h1>Default directories</h1>
+
+            <i>categories</i> : Files uploaded or inserted via GET method <br><br>
+            <i>files</i> : Other files (binary) <br><br>
+            <i>hash</i> : The chunk of files with SHA1 name encoded in base64<br><br>
+            <i>user</i> : Store the user that send a chunk of a file<br><br>
+            <i>url</i> : URLs and servers available<br><br>
+
+           </div>
+          </td>
+        </tr>
+      </table>
+
+      <br><br><br><br>
+ 
+      <a href='index.php' class='button'>&nbsp; Back &nbsp;</a>
+
+      <br><br><br><br>
+      <i>2022 - filechainy</i>
+    </div>
+  </body>
+</htlml>

@@ -148,29 +148,6 @@ if (isset($_GET['url'])){
 
   <style type="text/css"> 
 
-    <?php
-
-    $style = 1;
-
-    // For use a random image in background 
-
-    if ($style){
-
-        $folder = 'simple';
-        $limit = 2;
-
-        $random_background = rand(0, $limit);
-        $background_image = "background-image/$folder/$random_background.jpg";
-        $present_color = "#FFFFFF";
-
-    } else {
-  
-        $background_image = "background-image/$folder/$random_background.jpg";
-        $present_color = "#333";
-    }
-  
-    ?>
-
     .top{
       position: absolute;
       top: 0px;
@@ -186,8 +163,7 @@ if (isset($_GET['url'])){
       font-family: Arial;
       letter-spacing: 2px;
       color: #666666;
-      background-image: url("<?php echo $background_image; ?>");
-
+      background-image: url("background-image/simple/1.jpg");
       background-size: 100%;
     }
 
@@ -195,7 +171,7 @@ if (isset($_GET['url'])){
       letter-spacing: 4px;
       font-size: 54px;
       font-family: Verdana;
-      color: <?php echo $present_color; ?>;
+      color: #FFFFFF;
     }
 
     .present2{
@@ -207,7 +183,7 @@ if (isset($_GET['url'])){
       padding: 4%;
     }
 
-    .buttonBuy{      
+    .button{      
       padding: 20px;
       background-color: #666;
       border: 2px solid #000:
@@ -220,17 +196,15 @@ if (isset($_GET['url'])){
       
     }
 
-    .buttonBuy:hover{
+    .button:hover{
       background-color: #999;
       color: #333; 
       border: 1px solid #AAA;
+      text-decoration: none;
 
     }
 
     .bottom-right{
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
       background-color: #fff;
       opacity: 0.55;
       padding: 1%;
@@ -244,8 +218,11 @@ if (isset($_GET['url'])){
 
     a:hover{
       color: #777777; 
-      text-decoration: none;
+      text-decoration: underline;
+    }
 
+    input{
+    padding: 10px;
     }
     
   </style>
@@ -256,49 +233,64 @@ if (isset($_GET['url'])){
         <tr>
           <td>
            &nbsp;
-           <a href='index_pt.php'>PT</a> |  <a href='index.php'>ENG</a> &nbsp;&nbsp;
-           <a href='doc.html'>documentation</a> | <a href='about.html'>about</a>
- 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href='index.php'>Home</a> &nbsp;&nbsp;
+           <a href='doc.html'>documentation</a> | <a href='about.html'>about</a> 
+            &nbsp;&nbsp;
            <a href='upload.php' target='_blank'><img src='fatcow/add.png' alt='upload' height='20px'></a>&nbsp;
-           <a href='filelist.php' target='_blank'><img src='fatcow/folder.png' alt='filest' height='20px'></a>&nbsp;
-           <a href='groups.php' target='_blank'><img src='fatcow/mail_red.png' alt='groups' height='20px'></a>&nbsp;
-           <a href='convert.php' target='_blank'><img src='fatcow/add_on.png' alt='convert' height='20px'></a>&nbsp;
-           <a href='sourcecode.zip' target='_blank'><img src='fatcow/tux.png' alt='sourcecode' height='20px'></a>&nbsp;
-           <a href='zip_hash.php' target='_blank'><img src='fatcow/box_closed.png' alt='hashes' height='20px'></a>&nbsp;
+           <a href='files.php' target='_blank'><img src='fatcow/folder.png' alt='filest' height='20px'></a>&nbsp;           
+           <a href='urls_lists.php' target='_blank'><img src='fatcow/add_on.png' alt='convert' height='20px'></a>&nbsp;
+           <a href='zip_subdirectories.php' target='_blank'><img src='fatcow/box_closed.png' alt='hashes' height='20px'></a>&nbsp;
+           <a href='groups.php' target='_blank'><img src='fatcow/mail_red.png' alt='groups' height='20px'></a>&nbsp;    
           </td>
           <td>
-            <div align='right'>
-              <a href='#'><img src='logos/pix_1.png' OnClick="alert('filechainy@gmail.com');" alt='pix' height='25px'></a>
-              <a href='https://twitter.com/filechainy' target='_blank'><img src='logos/twitter_1.png' alt='twitter' height='25px'></a>
-              <a href='http://t.me/filechainy' target='_blank'><img src='logos/telegram_1.png' alt='telegram' height='25px'></a>
-              <a href='https://discord.gg/XqHb9veUvb' target='_blank'><img src='logos/discord_1.png' alt='discord' height='22px'></a>
-              <a href='https://www.instagram.com/filechainy/' target='_blank'><img src='logos/instagram_1.png' alt='instagram' height='25px'></a>     
-              <a href='https://www.reddit.com/user/filechainy' target='_blank'><img src='logos/reddit_1.png' alt='reddit' height='25px'></a>                    
-              <a href='https://github.com/filechainy/filechainy' target='_blank'><img src='logos/github_1.png' alt='github' height='25px'></a>              
-              <a href='https://wa.me/5591983608861' target='_blank'><img src='logos/whatsapp_1.png' alt='whatsapp' height='25px'></a>
-                
+            <div align='right'> 
+               Freelance :                                         
+               <a href='https://www.linkedin.com/in/arthur-sacramento-a55003230' target='_blank'>Linkedin</a> |
+               <a href='https://wa.me/5591983608861' target='_blank'>Whatsapp</a> |
+               <a href='#' OnClick="alert('filechainy@gmail.com');">E-mail</a> |
+               <a href='https://www.paypal.com/donate/?hosted_button_id=WMM623TBQECZC' target='_blank'>Donation</a> : <a href='#' OnClick="alert('filechainy@gmail.com');">Pix</a> | 
+               <a href='#' OnClick="alert('filechainy@gmail.com');">Become sponsor</a> 
+               &nbsp;
             </div>
           </td>
         </tr>
       </table>
 
-    <br><br><br><br>
+    <br><br><br><br>        
 
     <div align='center'>
      
       <span class='present'>
-        Earn transferring files
-      </span><br><br><br>
+        <i> Filechainy</i>
+      </span>
+    <br><br><br>   
+    <form action="search.php" method="POST">       
+              <input type="text" placeholder="Name" name="search">    
+              <input type="text" placeholder="Category" name="category">   
+              <input type="submit" value="Search" />               
+            </form>
 
       <table width='80%' style='text-justify: justify;' class='present2'>
         <tr>
           <td>
             <div style='text-align: justify;'>
-              Filechainy is the project of a descentralized storage system with rewards.
-              Filechainy provides a simple way for transfer files using SHA1 and base64 enconde.
-              The files are splitted and each chunk receive a SHA1 name.
-              This design provides a simple and eficient way for transfer and check file validity. <a href='about.html'><u>Learn more</u></a>
+            </br>
+
+> <a href='urls_lists.php'>Insert URLs</a><br><br>
+
+> <a href='upload.php'>Upload files</a><br><br>
+
+> <a href='groups.php'>Send a message to a group</a><br><br>
+
+> <a href='url_unique.php'>Insert a link (via GET <i>url, name, category</i> and <i>description</i>) [<a href='urls_categories.php' target='_blank'> view </a>] </i></a><br><br>
+
+> <a href='url.php'>Create a list of URLs</a> (using GET <i>url</i> and <i>name</i>)  [<a href='urls_categories_txt.php' target='_blank'> view </a>] </i></a><br><br>
+
+> <a href='request_send.php'>Send links to URLs</a><br></br>
+
+              <div align='right'>
+                <a href='about.html'><u>Learn more</u></a>
+              </div>
             </div>
           </td>
         </tr>
@@ -306,11 +298,13 @@ if (isset($_GET['url'])){
 
       <br><br><br><br> 
 
-      <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=aerae4%40gmail%2ecom&lc=US&item_name=Registration%20fee&item_number=2&amount=15%2e00&currency_code=USD&button_subtype=services&no_note=0&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHostedGuest' target='_blank' class='buttonBuy'>Application fee</a>
+      <a href='filechainy1.0.1.zip' target='_blank' class='button'>&nbsp; Download &nbsp;</a>
    
-      <br><br><br><br><br><br>
-
-      <i class='bottom-right'>2022 - filechainy</i>
+      <br><br><br>
+      <div align='right'>
+        <i class='bottom-right'>2022 - filechainy</i>
+      </div>
+      <br>
     </div>
   </body>
 </htlml>

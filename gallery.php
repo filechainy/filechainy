@@ -102,13 +102,13 @@ $limit = 6;
 $ini = $start *  $limit;
 $end = $ini + $limit;
 
-$slash_break = 1;
+$slash_break = 2;
 
 $entry = 0;
 $collum = 0;
 $search_break = 0;
 
-foreach (glob("files/*") as $picture){
+foreach (glob("categories/uploaded/*") as $picture){
     
 
         if ($c >= $ini and $c < $end){

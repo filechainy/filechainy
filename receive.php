@@ -7,7 +7,7 @@ $file = $_GET['file'];
 $url = $_GET['url'];
 $data = $_GET['data'];
 
-$folder = 'hash';
+$folder = 'categories';
 
 if ($file){
     $contents = $file;

@@ -8,7 +8,6 @@ if (isset($_GET['URL'])) {
     $url = $_GET['URL'];
 }
 
-
 if (isset($_GET['url'])) {
     $url = $_GET['url'];
 }
@@ -31,10 +30,12 @@ if (isset($_GET['cat'])) {
     $category = $_GET['cat'];
 }
 
+if(!is_dir("$folder")){
+    mkdir("$folder");
+}
+
 if(!is_dir("$folder/$category")){
-
     mkdir("$folder/$category");
-
 }
 
 if (isset($_GET['description'])) {

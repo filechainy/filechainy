@@ -75,22 +75,19 @@
         <tr>
           <td>
             <div style='text-align: justify;'>
-                  <h1>Brief</h1><br>   
-
-            <b>Filechainy</b> is a open-source project for transfer data using the GET method
-            <br>
             <br><br>
-            <hr>
-            <h1>How does the GET method work?</h1>
-
-            The method <b>GET</b> enables send contents to a site without fullfit a formulary or press a button. Just append to the site address the name (of the GET variable) and its contents.<br>
+            Filechainy provides a simple mechanism for save a text content in a file and searchable by filename. Also it's possible save the file in a category (folder). No MySQL is required
             <br>
- 
-            <h1>How to use it?</h1>
+            <br>            
+            Furthermore, is possible do various operations related to the GET method (for send and receive data) as split a file in small chunks enconded in base64 (using <a href='convert.php' target='_blank'>convert.php</a>) or send URLs and text to hosts using JavaScript (<a href='request_send.php' target='_blank'>request_send.php</a>).
+            <br>
+            <br>  
+            <h1>Inserting data via GET method</h1>
 
             http://test.com/index.php<br><br>
             Becomes<br><br>
             http://test.com/index.php<b>?url=http://google.com</b><br><br>
+
             Or with two parameters<br><br>
             http://test.com/index.php<b>?url=http://google.com&name=google</b><br><br>  
 
@@ -100,10 +97,9 @@
   
             
             <br>
-            <h1>Script usage</h1>
             <hr>
             <br>
-            In <a href='index.php' target='_blank'>index.php</a> You can use the GET parameters "hash" and "contents" or "url" for write a file (not show in search).<br>
+            In <a href='index.php' target='_blank'>index.php</a> You can use the GET parameters "hash" and "contents" (for files in base64) or "url" and "name" (for links or URLs) for write a file<br>
             E.g: index.php?url=http://test.com<br>
             <hr>
 
@@ -129,6 +125,85 @@
 
                3. Filechainy has no relationship with the companies owner of the logos used. Its use is for illustrative purposes only and fair use.
 
+            <br><br><br><h1>Scripts</h1>
+            
+            <a href='upload.php' target='_blabk'>upload.php</a> : Upload files to the 'files' directory <br><br>
+
+            <a href='files.php' target='_blabk'>filelist.php</a> : Show the files uploaded or sent(as text)<br><br>
+
+            <a href='files_simple.php' target='_blabk'>filelist.php</a> : Show the files uploaded (as text)<br><br>
+ 
+            <a href='gallery.php' target='_blabk'>gallery.php</a> : Show the files uploaded (as image)<br><br>
+
+            <a href='urls.php' target='_blabk'>urls.php</a> : Enter manually a URL<br><br>
+
+            <a href='paste.php' target='_blabk'>paste.php</a> : Simple paste tool <br><br>
+
+            <a href='groups.php' target='_blabk'>groups.php</a> : Send a message to a group <br><br>
+
+            <a href='zip_hash.php' target='_blabk'>zip_hash.php</a> : Zip the contents of a folder (without the subdirectories)  <br><br>
+
+            <a href='zip_subdirectories.php' target='_blabk'>zip_subdirectories.php</a> : Zip the contents of a folder with the subdirectories <br><br>
+
+            <a href='files.php' target='_blabk'>files.php</a> : Get the path of the files in a directory by GET variable <b>id</b> <br><br>
+
+            <a href='url.php' target='_blabk'>url.php</a> : Send a URL using the GET variables <i>URL</i> and <i>category</i> inside a text file.<br><br>
+
+            <a href='url_unique.php' target='_blabk'>url_unique.php</a> : Send a URL using the GET variables <i>URL, category, name</i> and <i>description</i> as a file <br><br>
+
+            <a href='index.php' target='_blabk'>index.php</a> : You can insert new items using the GET variables <b>hash</b> and <b>contents</b>. 	    
+            You can get the path of a file using the GET variable <b>id</b> (e.g: index.php?id=1) or <b>userid</b>, <b>fileid</b> and <b>urlid</b> respectively<br><br>
+
+            <a href='convert.php' target='_blabk'>convert.php</a> : Split the files of 'file' folder in chunks of 8 Kb with a SHA1 name and save in 'hash' folder encoded in base64. A key will be created in 'key' folder with the order that the chunks of the file must be read   <br><br>
+
+            <a href='send.php' target='_blabk'>send.php</a>, <a href='multiple_send.php' target='_blabk'>multiple_send.php</a> and <a href='multiple_send_list.php' target='_blabk'>multiple_send_list.php</a>  : Send contents to URLs <br><br>
+
+            <a href='receive.php' target='_blabk'>receive.php</a> : Receive the GET variables <i>hash, contents and user</i>. But shows a blank page if if the variables are not assigned    <br><br>
+
+            <a href='view.php' target='_blabk'>view.php</a> : Paste the pieces of files present in a key (restore a file) <br><br>
+
+            <a href='request_send.php' target='_blabk'>request_send.php</a> : Send a list of links to a list of sites (URLs) <br><br>        
+         
+            <a href='down_test.php' target='_blabk'>down_test.php</a> : Download all the files presents in 'files/files.txt' using PHP <br><br>  
+
+            <a href='search.php' target='_blabk'>search.php</a> : Search per files without MySQL <br><br>  
+
+            <hr>
+            
+            <br>
+
+            <h1>Java</h1><br>
+<a href='Java/TextSenderGUI.java' target='_blank'>TextSenderGUI</a> - Send a text via GET to all urls in the 'urls.txt' file <br><br>
+<a href='Java/FileCheckerV2.java' target='_blank'>FileCheckerV2</a> - Check if the files in 'hash' directory are the same of urls in 'urls.txt' <br><br>
+<a href='Java/FileCheckerV3.java' target='_blank'>FileCheckerV3</a> - Check if the files in 'hash' directory are the same of urls in 'urls.txt' with latency <br><br>
+<a href='Java/SendTest.java' target='_blank'>SendTest</a> - Convert the file 'test.txt' to base64 and send the converted file via http GET request <br><br>
+<a href='Java/SendTestV2.java' target='_blank'>SendTestV2</a> - Convert the files of 'files' diretory to base64 and send the converted files via http GET request <br><br>
+<a href='Java/FileConverter.java' target='_blank'>FileConverter</a> - Convert the files of 'files' directory to base64 and split in chunks of 8kb <br><br>
+<a href='Java/DownloadUrlsNew.java' target='_blank'>DownloadUrlsNew</a> - Downloads all the urls of the text file 'urls.txt' in the 'files' directory <br><br>
+<a href='Java/RemoveDuplicateUrls.java' target='_blank'>RemoveDuplicateUrls</a> - Remove duplicate values of 'urls.txt' <br><br>
+<a href='Java/URLGetter.java' target='_blank'>URLGetter</a> = Reads "files.txt" and sends each URL contained in the file to the URLs contained in "urls.txt" using the GET variable "file": <br><br>
+<a href='Java/URLImageDisplayer.java' target='_blank'>URLImageDisplayer</a> - A window that load the hyperlinks with images from a text file or external URL <br><br>
+<a href='Java/CheckUrls.java' target='_blank'>CheckUrls</a> - This program read the text file 'urls.txt'and check each URL against all others for verify if they host the same files. If so, a small GET request will be performed to a log server.
+            The files that will be checked must be in the 'hash' folder.<br><br>
+<a href='Java/Filechainy.java' target='_blank'>Filechainy.java</a> - Default application to send and download texts via GET request to multiple hosts<br><br>
+<a href='Java/UrlLatencyChecker.java' target='_blank'>UrlLatencyChecker.java</a> - Check the latency of a list of URLs using GUI<br><br>
+
+
+            <br>           
+            <h1>Donations</h1>
+            If the project was useful or interesting you can do a donation
+
+            <br>
+            PayPal : <a href='https://www.paypal.com/donate/?hosted_button_id=WMM623TBQECZC' target='_blank'>PayPal</a> / Chave PIX : filechainy@gmail.com
+
+            <br><br>
+
+            <h1>Doubts, suggestions of freelance contact</h1>
+
+            <a href='https://www.linkedin.com/in/arthur-sacramento-a55003230' target='_blank'>Linkedin</a><br>
+            <a href='https://wa.me/5591983608861' target='_blank'>Whatsapp</a><br>
+            filechainy@gmail.com<br>
+
            </div>
           </td>
         </tr>
@@ -136,7 +211,7 @@
 
       <br> 
 
-      <br><br><br><br><br>         
+      <br><br><br>       
 
       <a href='index.php' class='buttonBuy'>&nbsp; Back &nbsp;</a>
    

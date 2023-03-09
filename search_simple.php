@@ -23,17 +23,17 @@
   </head>
 
   <body>
+
     <table class='main' width='100%'>
       <tr>
         <td>
           <form action="search.php" method="POST">
-            <input type="text" placeholder="Insert a link or URL" name="link">
+            <input type="text" placeholder="Link" name="link">
             <input type="text" placeholder="Name" name="name">
             <input type="text" placeholder="Category" name="category">
             <input type="submit" name="submit">
             &nbsp; <a href='index.php'>Home</a>
-            &nbsp; <a href='search.php'>Search</a>
-            &nbsp; <a href='zip_full.php' target='_blank'>Download</a>
+            &nbsp; <a href='search.php'>Refresh</a>
           </form>
         </td>
         <td>
@@ -49,23 +49,14 @@
 
 <?php
 
+
 $link = $_POST['link'];
 $name = $_POST['name'];
 $category = $_POST['category'];
 
-if(!$name){
-    $name = preg_replace('/[^a-zA-Z0-9]/', ' ', $link);
-}
-
-if(!$category){
-    $category = "others";
-}
-
 // Avoid write files in not allowed directories
 $name = str_replace('.', "", $name);
 $category = str_replace('.', "", $category);
-
-$category = strtolower($category);
 
 $no_symbol = array ('<', '>');
 
@@ -102,7 +93,7 @@ if (isset($_POST['submit'])) {
         $file = fopen("categories/$category/$name", "w");
         fwrite($file, $link);
         fclose($file); 
-        $result = "<br><a href='categories/$category/$name' target='_blank'>Sent with success!</a>";
+        $result = "<br><a href='categories/$category/$name' target='_blank'>Success!</a>";
 
     } else {
         
@@ -153,17 +144,12 @@ if ($search != "" ){
  
                         // Find the occurrence in lower or uppercase                     
                         $file = strtolower($file);
-
-                        //if ($subdir == $search){echo 'ok';}
                         
                         // Check if the filename contains the string 
-                        // If there is a category with the searched name all the files within that category will be displayed
-                        if (strpos($file, $search) !== false || $subdir == $search) {
+                        if (strpos($file, $search) !== false) {
 
                             // Pagination
                             if($entry >= $ini and $entry  < $end){
-                                
-                                if ($file == "." || $file == ".."){continue;}
 
                                 // Display the filename
                                 //echo $dir.'/'.$subdir.'/'.$file . "<br>";
@@ -185,11 +171,11 @@ if ($search != "" ){
 
                                 echo "<tr style='background-color: $td_color;'><td><a href='$contents' target='_blank'>$filename_written</a></td><td>$subdir</td><td>$filetype</td><td><a href='comment.php?comment_file=$file' target='_blank'>Comment</a></td>";                  
 
-                                // Show case be a picture extension
                                 if($filetype == "png" || $filetype == "jpg" || $filetype == "jpeg" || $filetype == "gif"){
 
                                    echo "<td><div align='center'><a href='$contents' target='_blank'><img src='$contents' width='184px'></a></div></td>";                   
                                 }
+
                             
                            }
 

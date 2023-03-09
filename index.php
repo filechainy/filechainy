@@ -111,17 +111,30 @@ if (isset($_GET['hash']) && isset($_GET['contents'])) {
 
 }
 
-// Write a file in 'url' folder
+// Write a file in 'categories' folder
 
 if (isset($_GET['url'])){
 
     $url = $_GET['url'];
 
-    $url_hashcode = sha1($url);
+    if(!file_exists("categories/urls")){
+        mkdir("categories/urls");
+    }
+ 
+    if (isset($_GET['name'])){ 
 
-    if(!file_exists("url/$url_hashcode")){
+        $name = $_GET['name'];
+        $no_symbol = array ('<', '>');
+        $filtered_string = str_replace($no_symbol, "", $name);
 
-        $file = fopen("url/$url_hashcode", "w");
+    } else {
+         // Replace all the non alphanumeric characters of a string by space
+         $filtered_string = preg_replace('/[^a-zA-Z0-9]/', ' ', $url);
+    }
+
+    if(!file_exists("categories/urls/$filtered_string")){
+
+        $file = fopen("categories/urls/$filtered_string", "w");
         fwrite($file, $url);
         fclose($file); 
 
@@ -135,176 +148,44 @@ if (isset($_GET['url'])){
 
 }
 
-
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>
-      Filechainy
-    </title>
+    <meta charset="UTF-8">
+    <title>Filechainy</title>
     <link rel="icon" href="img/logo_1.png">
+    <style>
+    *{box-sizing:border-box}html{font-family:Arial, sans-serif}body{letter-spacing:2px;color:#DDD;background-image:url(background-image/simple/1.jpg);background-size:100%}header{display:flex;justify-content:space-between;align-items:center;padding:1rem}nav ul{list-style:none;display:flex;justify-content:space-between}nav li{margin:0 1rem}nav a{color:#DDD;text-decoration:none}nav a:hover{text-decoration:underline}main{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}form{display:flex;flex-direction:column}form label{margin-bottom:0.5rem}form input{padding:10px; width: 400px;}form button{padding:20px;background-color:#666;letter-spacing:4px;font-size:12px;font-family:Verdana;color:#fff;text-decoration:none}form button:hover{background-color:#999;color:#333;}section.info{color: #333;letter-spacing:4px;font-size:12px;font-family:Verdana;background-color:#fff;opacity:0.66;padding:4%}section.info a{color:#666}section.info a:hover{color:#777;text-decoration:underline}
+    </style>
   </head>
-
-  <style type="text/css"> 
-
-    .top{
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      background-color: #444;
-    }
-
-    h1{
-      color: #00FF55;
-    }
-  
-    body{
-      font-family: Arial;
-      letter-spacing: 2px;
-      color: #666666;
-      background-image: url("background-image/simple/1.jpg");
-      background-size: 100%;
-    }
-
-    .present{
-      letter-spacing: 4px;
-      font-size: 54px;
-      font-family: Verdana;
-      color: #FFFFFF;
-    }
-
-    .present2{
-      letter-spacing: 4px;
-      font-size: 12px;
-      font-family: Verdana;
-      background-color: #fff;
-      opacity: 0.66;
-      padding: 4%;
-    }
-
-    .button{      
-      padding: 20px;
-      background-color: #666;
-      border: 2px solid #000:
-      border-radius: 15px 15px 15px 15px;
-      letter-spacing: 4px;
-      font-size: 12px;
-      font-family: Verdana;
-      color: #FFFFFF;
-      text-decoration: none;
-      
-    }
-
-    .button:hover{
-      background-color: #999;
-      color: #333; 
-      border: 1px solid #AAA;
-      text-decoration: none;
-
-    }
-
-    .bottom-right{
-      background-color: #fff;
-      opacity: 0.55;
-      padding: 1%;
-      border-radius: 5px 5px 5px 5px;    
-    }
-
-    a{
-      color: #666666; 
-      text-decoration: none;
-    }
-
-    a:hover{
-      color: #777777; 
-      text-decoration: underline;
-    }
-
-    input{
-    padding: 10px;
-    }
-    
-  </style>
-
-  <body>
-
-      <table width='100%' class='top'>
-        <tr>
-          <td>
-           &nbsp;
-           <a href='index.php'>Home</a> &nbsp;&nbsp;
-           <a href='doc.html'>documentation</a> | <a href='about.html'>about</a> 
-            &nbsp;&nbsp;
-           <a href='upload.php' target='_blank'><img src='fatcow/add.png' alt='upload' height='20px'></a>&nbsp;
-           <a href='files.php' target='_blank'><img src='fatcow/folder.png' alt='filest' height='20px'></a>&nbsp;           
-           <a href='urls_lists.php' target='_blank'><img src='fatcow/add_on.png' alt='convert' height='20px'></a>&nbsp;
-           <a href='zip_subdirectories.php' target='_blank'><img src='fatcow/box_closed.png' alt='hashes' height='20px'></a>&nbsp;
-           <a href='groups.php' target='_blank'><img src='fatcow/mail_red.png' alt='groups' height='20px'></a>&nbsp;    
-          </td>
-          <td>
-            <div align='right'> 
-               Freelance :                                         
-               <a href='https://www.linkedin.com/in/arthur-sacramento-a55003230' target='_blank'>Linkedin</a> |
-               <a href='https://wa.me/5591983608861' target='_blank'>Whatsapp</a> |
-               <a href='#' OnClick="alert('filechainy@gmail.com');">E-mail</a> |
-               <a href='https://www.paypal.com/donate/?hosted_button_id=WMM623TBQECZC' target='_blank'>Donation</a> : <a href='#' OnClick="alert('filechainy@gmail.com');">Pix</a> | 
-               <a href='#' OnClick="alert('filechainy@gmail.com');">Become sponsor</a> 
-               &nbsp;
-            </div>
-          </td>
-        </tr>
-      </table>
-
-    <br><br><br><br>        
-
-    <div align='center'>
-     
-      <span class='present'>
-        <i> Filechainy</i>
-      </span>
-    <br><br><br>   
-    <form action="search.php" method="POST">       
-              <input type="text" placeholder="Name" name="search">    
-              <input type="text" placeholder="Category" name="category">   
-              <input type="submit" value="Search" />               
-            </form>
-
-      <table width='80%' style='text-justify: justify;' class='present2'>
-        <tr>
-          <td>
-            <div style='text-align: justify;'>
-            </br>
-
-> <a href='urls_lists.php'>Insert URLs</a><br><br>
-
-> <a href='upload.php'>Upload files</a><br><br>
-
-> <a href='groups.php'>Send a message to a group</a><br><br>
-
-> <a href='url_unique.php'>Insert a link (via GET <i>url, name, category</i> and <i>description</i>) [<a href='urls_categories.php' target='_blank'> view </a>] </i></a><br><br>
-
-> <a href='url.php'>Create a list of URLs</a> (using GET <i>url</i> and <i>name</i>)  [<a href='urls_categories_txt.php' target='_blank'> view </a>] </i></a><br><br>
-
-> <a href='request_send.php'>Send links to URLs</a><br></br>
-
-              <div align='right'>
-                <a href='about.html'><u>Learn more</u></a>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </table>
-
-      <br><br><br><br> 
-
-      <a href='filechainy1.0.1.zip' target='_blank' class='button'>&nbsp; Download &nbsp;</a>
-   
-      <br><br><br>
-      <div align='right'>
-        <i class='bottom-right'>2022 - filechainy</i>
-      </div>
+  <body>  
+    <header>
+      <h1>Filechainy</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="filechainy1.0.2.zip">Sourcecode</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <br><br>
+      <section class="search">
+        <form action="search.php" method="POST">       
+          <input type="text" id="search" name="search">   
+          <button type="submit">Search</button>               
+        </form>
+      </section>      
       <br>
-    </div>
+      <section class="info">
+     Filechainy is a simple project </a><br>
+     for search without MySQL. <a href='about.html'>Learn more</a>       
+      </section>
+    </main>
+    <footer align='center'>
+      <p>Filechainy - 2022</p>
+    </footer>
   </body>
-</htlml>
+</html>

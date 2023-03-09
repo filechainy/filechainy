@@ -3,6 +3,9 @@
 // Split files and convert to base64
 include("convert.php");
 
+// Avoid bloat the zip file
+unlink("archive.zip");
+
 // Define the directory to be zipped
 $dir = 'hash/';
 

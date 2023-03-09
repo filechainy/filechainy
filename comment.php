@@ -175,7 +175,7 @@ if (isset($_POST['submit'])) {
   $sha1_msg = sha1("$name $message $date");
 
   // Format the message as a string
-  $messageString = "<a href='comment.php?comment_file=$sha1_msg'>[comment]</a> $date - $name: $message\n";
+  $messageString = "<a href='comment.php?comment_file=$sha1_msg' target='_blank'>[comment]</a> $date - $name: $message\n";
 
   // Append the message to the messages file
   file_put_contents("comments/$filename_hash", $messageString, FILE_APPEND);

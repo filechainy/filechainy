@@ -166,16 +166,16 @@ if (isset($_GET['url'])){
       <nav>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="filechainy1.0.2.zip">Sourcecode</a></li>
+          <li><a href="filechainy1.0.2.1.zip">Sourcecode</a></li>
         </ul>
       </nav>
     </header>
     <main>
       <br><br>
       <section class="search">
-        <form action="search.php" method="POST">       
+        <form action="search.php" method="POST">      
           <input type="text" id="search" name="search">   
-          <button type="submit">Search</button>               
+          <button type="submit">Search</button>   
         </form>
       </section>      
       <br>

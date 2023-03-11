@@ -1,7 +1,7 @@
 <?php
 
 // Avoid bloat the zip file
-unlink("filechainy1.0.2.zip");
+unlink("data.zip");
 
 // Set the path to the directory to be compressed
 $dirPath = __DIR__ ;
@@ -10,7 +10,7 @@ $dirPath = __DIR__ ;
 $zip = new ZipArchive();
 
 // Set the name of the zip file to be created
-$zipName = 'filechainy1.0.2.zip';
+$zipName = 'data.zip';
 
 // Open the zip file for writing
 if ($zip->open($zipName, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
@@ -44,5 +44,5 @@ if ($zip->open($zipName, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
   
 }
 
-echo " <a href='filechainy1.0.2.zip'>download</a>";
+echo " <a href='data.zip'>download</a>";
 ?>

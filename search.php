@@ -32,8 +32,9 @@
             <input type="text" placeholder="Category" name="category">
             <input type="submit" name="submit">
             &nbsp; <a href='index.php'>Home</a>
-            &nbsp; <a href='search.php'>Search</a>
+            &nbsp; <a href='search_op.php'>Search by category</a>
             &nbsp; <a href='zip_full.php' target='_blank'>Download</a>
+            &nbsp; <a href='upload.php' target='_blank'>Upload</a>
           </form>
         </td>
         <td>
@@ -118,6 +119,9 @@ $search = $_POST['search'];
 
 if ($search == ""){$search = $_GET['search'];}	
 
+// Avoid accessing the above directories
+$search = str_replace('.', "", $search);
+
 $c = 0;
 $limit = 20;
 $ini = $start *  $limit;
@@ -126,8 +130,6 @@ $end = $ini + $limit;
 $entry = 0;
 
 $search = strtolower($search);
-
-$slash_break = 3;
 
 echo "<hr>$result <table width='100%'>";
 
@@ -152,13 +154,13 @@ if ($search != "" ){
                         $filename_written = $file;  
  
                         // Find the occurrence in lower or uppercase                     
-                        $file = strtolower($file);
+                        $file_l = strtolower($file);
 
                         //if ($subdir == $search){echo 'ok';}
                         
                         // Check if the filename contains the string 
                         // If there is a category with the searched name all the files within that category will be displayed
-                        if (strpos($file, $search) !== false || $subdir == $search) {
+                        if (strpos($file_l, $search) !== false || $subdir == $search) {
 
                             // Pagination
                             if($entry >= $ini and $entry  < $end){
@@ -172,7 +174,18 @@ if ($search != "" ){
 
                                 $file_path = $dir.'/'.$subdir.'/'.$file;
 
-                                $contents = file_get_contents($file_path);
+                                $filesize = filesize($file_path);
+
+                                // Checks if is a binary file or text content
+                                if($filesize > 500){
+
+                                    $contents = $file_path;
+
+                                } else {
+
+                                    $contents = file_get_contents($file_path);
+
+                                }
 
                                 $lastDotIndex = strrpos($contents, ".");
 
@@ -183,6 +196,9 @@ if ($search != "" ){
 
                                 $filetype = strtolower($filetype);
 
+                                // Don't show characters or variables after the file extension
+                                $filetype = substr($filetype, 0, 3);
+
                                 echo "<tr style='background-color: $td_color;'><td><a href='$contents' target='_blank'>$filename_written</a></td><td>$subdir</td><td>$filetype</td><td><a href='comment.php?comment_file=$file' target='_blank'>Comment</a></td>";                  
 
                                 // Show case be a picture extension
@@ -190,24 +206,31 @@ if ($search != "" ){
 
                                    echo "<td><div align='center'><a href='$contents' target='_blank'><img src='$contents' width='184px'></a></div></td>";                   
                                 }
-                            
-                           }
 
-                        $entry++;
-                        if($entry == $limit){break;}
+                                $search_break++;
+                            
+                            }
+
+                            $entry++;
+                        
+                            // Skip the files of the directory when reached the total results
+                            if($search_break == $end){break;}
                         }
                    
                     }
 
-                // Close the subdirectory
-                closedir($subhandle); 
+                    if($search_break == $end){break;}
+          
+                    // Close the subdirectory
+                    closedir($subhandle); 
                 }
             
             }
 
         }
-    // Close the directory
-    closedir($handle);
+
+        // Close the directory
+        closedir($handle);
     }
 
     if ($entry == 0){

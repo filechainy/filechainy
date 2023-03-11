@@ -76,12 +76,16 @@
           <td>
             <div style='text-align: justify;'>
             <br><br>
-            Filechainy provides a simple mechanism for save a text content in a file and searchable by filename. Also it's possible save the file in a category (folder). No MySQL is required
+            Filechainy provides a simple mechanism for search by filename or category. <br><br>
+
+            The mechanism is quite simple, it goes through the directories (categories) and looks for an occurrence of the searched phrase in the name of the files. Each link or URL is saved as a file in a folder (category).<br><br>
+            
+            One notable limitation is that each file or entry can only have one category. (but a compound name can workaround this)<br><br>
+
+            Tip: Using the "Search by category" the search is fastest (because omits a loop)
             <br>
-            <br>            
-            Furthermore, is possible do various operations related to the GET method (for send and receive data) as split a file in small chunks enconded in base64 (using <a href='convert.php' target='_blank'>convert.php</a>) or send URLs and text to hosts using JavaScript (<a href='request_send.php' target='_blank'>request_send.php</a>).
-            <br>
-            <br>  
+            <br> 
+          
             <h1>Inserting data via GET method</h1>
 
             http://test.com/index.php<br><br>
@@ -95,7 +99,8 @@
             The <b>=</b> symbol is used to assign to each GET variable a content as in "url=http://google.com" (where "url" is the GET variable that will receive and "http://google.com" is the content sent).<br>
             The <b>&</b> is utilised to separate each variable and its contents from the others<br>
   
-            
+            <br> Furthermore, is possible do various operations related to the GET method (for send and receive data) as split a file in small chunks enconded in base64 (using <a href='convert.php' target='_blank'>convert.php</a>) or send URLs and text to hosts using JavaScript (<a href='request_send.php' target='_blank'>request_send.php</a>).
+           
             <br>
             <hr>
             <br>
